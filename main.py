@@ -18,12 +18,12 @@ while (cap.isOpened()):
     break
   np.flip(img, axis=1)
   hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-  lower_red = np.array([60, 120, 50])
-  upper_red = np.array([140, 255, 255])
-  mask1 = cv2.inRange(hsv, lower_red, upper_red)
-  lower_red = np.array([240, 120, 70])
-  upper_red = np.array([340, 255, 255])
-  mask2 = cv2.inRange(hsv, lower_red, upper_red)
+  lower_black = np.array([30, 30, 0])
+  upper_black = np.array([104, 153, 0])
+  mask1 = cv2.inRange(hsv, lower_black, upper_black)
+  lower_black = np.array([60, 60, 0])
+  upper_black = np.array([145, 178, 0])
+  mask2 = cv2.inRange(hsv, lower_black, upper_black)
   mask1 = mask1 + mask2
   mask1 = cv2.morphologyEx(mask1, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
   mask1 = cv2.morphologyEx(mask1, cv2.MORPH_DILATE, np.ones((3, 3), np.uint8))
